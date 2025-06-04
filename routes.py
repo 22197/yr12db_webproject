@@ -14,7 +14,7 @@ def all_hardware():
     return render_template("all_hardware.html", title="all hardware")
 
 
-@app.route('/hardware')
+@app.route('/hardware>')
 def hardware():
     return render_template("hardware.html", title="hardware")
 

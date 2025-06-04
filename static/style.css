@@ -1,0 +1,29 @@
+h1{
+    font-family: "Victor Mono", monospace;
+}
+p{
+    font-family: "Space Mono", monospace;
+}
+
+
+header{
+    background-color: #EE4949;
+    text-align: center;
+    font-family: "Victor Mono", monospace;
+}
+.button1{
+    font-family: "Victor Mono", monospace;
+    
+}
+
+
+
+
+
+
+
+
+.column{
+    width: 50%;
+
+}

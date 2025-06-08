@@ -1,5 +1,6 @@
 h1{
     font-family: "Victor Mono", monospace;
+    color:#EE4949;
 }
 p{
     font-family: "Space Mono", monospace;
@@ -8,13 +9,35 @@ p{
 
 header{
     background-color: #EE4949;
-    text-align: center;
+    text-align: left;
     font-family: "Victor Mono", monospace;
+    padding: 20px;
 }
-.button1{
+.buttonlink{
+    background-color: white;
     font-family: "Victor Mono", monospace;
-    
+    padding: 10px 20px;
+    border-radius:5px;
+    text-decoration:none;
+    color:black;
 }
+.buttonlink:hover{
+    background-color: whitesmoke;
+}
+
+
+.buttonlink1{
+    font-family: "Victor Mono", monospace;
+    padding: 10px 20px;
+    border-radius:5px;
+    border-width:3px;
+    border-color:#EE4949;
+    text-decoration:none;
+    color:#EE4949;
+    text-align:center;
+}
+
+
 
 
 

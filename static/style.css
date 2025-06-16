@@ -18,14 +18,13 @@ header{
     font-family: "Victor Mono", monospace;
     padding: 10px 20px;
     border-radius:5px;
+    border-color: black;
     text-decoration:none;
     color:black;
 }
 .buttonlink:hover{
     background-color: whitesmoke;
 }
-
-
 .buttonlink1{
     font-family: "Victor Mono", monospace;
     padding: 10px 20px;
@@ -36,15 +35,9 @@ header{
     color:#EE4949;
     text-align:center;
 }
-
-
-
-
-
-
-
-
-
+.searchbar{
+    float:right;
+}
 
 .column{
     width: 50%;

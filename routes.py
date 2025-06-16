@@ -14,7 +14,7 @@ def home():
 def all_hardware():
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
-    cur.execute()
+    cur.execute('SELECT hw_name FROM Hardware;')
     hardwares = cur.fetchall()
     conn.close()
     hardware = hardwares[id-1]

@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-<div>
-<p>list of hardware</p>
+
+{% for hardware in hardwares%}
+<div class="row">
+    <p></p>
 </div>
+{% end for %}
+
 {% endblock %}

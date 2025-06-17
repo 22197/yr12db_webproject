@@ -14,14 +14,13 @@ def home():
 def all_hardware():
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
-    cur.execute('SELECT hw_name FROM Hardware;')
+    cur.execute('SELECT hw_id, hw_name FROM Hardware;')
     hardwares = cur.fetchall()
     conn.close()
-    hardware = hardwares[id-1]
-    return render_template("all_hardware.html", title="all_hardware", hardware=hardware, hardwares=hardwares)
+    return render_template("all_hardware.html", title="all_hardware", hardwares=hardwares)
 
 
-@app.route('/hardware>')
+@app.route('/hardware/<int:id>')
 def hardware():
     return render_template("hardware.html", title="hardware")
 

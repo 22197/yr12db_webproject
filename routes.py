@@ -21,8 +21,14 @@ def all_hardware():
 
 
 @app.route('/hardware/<int:id>')
-def hardware():
-    return render_template("hardware.html", title="hardware")
+def hardware(id):
+    conn = sqlite3.connect('HARDWARE.db')
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM Hardware;')
+    hardwares = cur.fetchall()
+    hardware = hardwares[id-1]
+    conn.close()
+    return render_template("hardware.html", title="hardware", id=id, hardware=hardware)
 
 
 @app.route('/software')

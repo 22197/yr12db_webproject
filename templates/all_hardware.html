@@ -2,7 +2,7 @@
 {% block content %}
 
 {% for hardware in hardwares%}
-<p>{{hardware[1]}}</p>
+<a href = "/hardware/{{hardware[0]}}">{{hardware[1]}}</a><br>
 {% endfor %}
 
 {% endblock %}

@@ -1,3 +1,4 @@
+/* Text */
 h1{
     font-family: "Victor Mono", monospace;
     color:#EE4949;
@@ -6,7 +7,7 @@ p{
     font-family: "Space Mono", monospace;
 }
 
-
+/* header.html */
 header{
     background-color: #EE4949;
     text-align: left;
@@ -25,8 +26,11 @@ header{
 .buttonlink:hover{
     background-color: whitesmoke;
 }
+.searchbar{
+    float:right;
+}
 
-
+/* home.html */
 .buttonlink1{
     font-family: "Victor Mono", monospace;
     padding: 10px 20px;
@@ -52,25 +56,13 @@ header{
   transform: translate(-50%, -50%);
 }
 
-
-
-
-
-
-
-
-
-
-
+/* all_hardware.html */
 .buttonlink2{
     font-family:"Victor Mono", monospace;
     color: #EE4949;
-    
-    
 }
-.searchbar{
-    float:right;
-}
+/* Try JAVA script to make it so the image changes -> get help from copilot */
+
 
 .column{
     width: 50%;

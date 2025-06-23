@@ -2,7 +2,11 @@
 {% block content %}
 
 {% for hardware in hardwares%}
-<a href = "/hardware/{{hardware[0]}}" class="buttonlink2">{{hardware[1]}}</a><br>
+<a href = "/hardware/{{hardware[0]}}" class="buttonlink2" 
+onmouseover="changeImage('')"
+onmouseout="changeImage('')">
+{{hardware[1]}}
+</a><br>
 {% endfor %}
-
+<img id = "hardwareimg" src="/static/images/hardware.png" alt="Hardware Image">
 {% endblock %}

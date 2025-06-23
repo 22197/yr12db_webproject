@@ -25,19 +25,47 @@ header{
 .buttonlink:hover{
     background-color: whitesmoke;
 }
+
+
 .buttonlink1{
     font-family: "Victor Mono", monospace;
     padding: 10px 20px;
     border-radius:5px;
     border-width:3px;
     border-color:#EE4949;
+    background-color: white;
     text-decoration:none;
     color:#EE4949;
-    text-align:center;
+    border-left: 50%
 }
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid #EE4949;
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+
+
+
+
 .buttonlink2{
     font-family:"Victor Mono", monospace;
     color: #EE4949;
+    
     
 }
 .searchbar{
@@ -48,3 +76,4 @@ header{
     width: 50%;
 
 }
+

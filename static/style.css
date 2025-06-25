@@ -7,6 +7,14 @@ p{
     font-family: "Space Mono", monospace;
 }
 
+/* Layout */
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
 /* header.html */
 header{
     background-color: #EE4949;
@@ -61,11 +69,24 @@ header{
     font-family:"Victor Mono", monospace;
     color: #EE4949;
 }
-/* Try JAVA script to make it so the image changes -> get help from copilot */
+    /* Try JAVA script to make it so the image changes -> get help from copilot */
+.column1left{
+    flex: 35%;
+    padding: 10px;
+    text-align: center;
+    box-sizing :border-box;
+}
+.column1right{
+    flex: 65%;
+    padding: 10px;
+    text-align: center;
+    box-sizing :border-box;
+    background-color: grey;
+}
 
 
+/* hardware.html */
 .column{
-    width: 50%;
 
 }
 

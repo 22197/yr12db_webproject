@@ -68,6 +68,7 @@ header{
 .buttonlink2{
     font-family:"Victor Mono", monospace;
     color: #EE4949;
+    padding: 10px 20px;
 }
     /* Try JAVA script to make it so the image changes -> get help from copilot */
 .column1left{
@@ -87,6 +88,9 @@ header{
 
 /* hardware.html */
 .column{
-
+    flex: 50%;
+    padding: 10px;
+    text-align: center;
+    box-sizing :border-box;
 }
 

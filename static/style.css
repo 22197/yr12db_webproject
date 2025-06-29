@@ -69,6 +69,12 @@ header{
     font-family:"Victor Mono", monospace;
     color: #EE4949;
     padding: 10px 20px;
+    display: block;
+    margin-bottom: 5%;
+}
+.buttonlink2:hover{
+    background-color: whitesmoke;
+    color: #ee4949;
 }
     /* Try JAVA script to make it so the image changes -> get help from copilot */
 .column1left{

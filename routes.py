@@ -24,11 +24,30 @@ def all_hardware():
 def hardware(id):
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
-    cur.execute('SELECT * FROM Hardware;')
+    cur.execute('''SELECT
+                h.hw_id, 
+                h.hw_name, 
+                h.release_yr, 
+                h.description, 
+                h.sale_after_yr, 
+                c.console_type, 
+                m.media_name
+
+                FROM Hardware h
+
+                LEFT JOIN ConsoleType c ON h.con_id = c.con_id
+
+                LEFT JOIN MediaType m ON h.media_id = m.media_id''')
     hardwares = cur.fetchall() #fetch all hardware, creating a list of tuples
     hardware = hardwares[id-1] #since id starts from 1, subtract 1 to get the correct index
+
+    cur1 = conn.cursor()
+    cur1.execute('')
+    softwareseries = cur1.fetchall()
+
+
     conn.close()
-    return render_template("hardware.html", title="hardware", id=id, hardware=hardware)
+    return render_template("hardware.html", title="hardware", id=id, hardware=hardware, softwareseries=softwareseries)
 
 #route for specific hardware
 @app.route('/software')

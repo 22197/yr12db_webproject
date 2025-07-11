@@ -1,17 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
+
+<h1>{{hardware[1]}}</h1>
 <div class="row">
     <div class="column">
         <p>hi</p>
     </div>
     <div class="column">
-        <h1>{{hardware[1]}}</h1>
         <p> {{hardware[4]}}</p>
     </div>
 </div>
 <div class="row">
     <div class="column">
-        <p>hi</p>
+        <p>Popular series available:</p>
+        {% for software in softwareseries%}
+            <a href = "/softwareseries/{{software[0]}}">
+                {{software[1]}}
+            </a>   
+        {% endfor %}     
     </div>
     <div class="column">
         <p>Console Type: {{hardware[5]}}</p>

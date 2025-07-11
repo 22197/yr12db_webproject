@@ -42,7 +42,9 @@ def hardware(id):
     hardware = hardwares[id-1] #since id starts from 1, subtract 1 to get the correct index
 
     cur1 = conn.cursor()
-    cur1.execute('')
+    cur1.execute('''SELECT sw_id, sw_name FROM SoftwareSeries WHERE sw_id IN (
+                 SELECT sw_id FROM HardSoft WHERE hw_id = (
+                 SELECT hw_id FROM Hardware WHERE hw_id = "5"));''')
     softwareseries = cur1.fetchall()
 
 
@@ -50,7 +52,7 @@ def hardware(id):
     return render_template("hardware.html", title="hardware", id=id, hardware=hardware, softwareseries=softwareseries)
 
 #route for specific hardware
-@app.route('/software')
+@app.route('/softwareseries/<int:id>')
 def software():
     return render_template("software.html", title="software")
 

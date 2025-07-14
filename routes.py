@@ -44,7 +44,7 @@ def hardware(id):
     cur1 = conn.cursor()
     cur1.execute('''SELECT sw_id, sw_name FROM SoftwareSeries WHERE sw_id IN (
                  SELECT sw_id FROM HardSoft WHERE hw_id = (
-                 SELECT hw_id FROM Hardware WHERE hw_id = "5"));''')
+                 SELECT hw_id FROM Hardware WHERE hw_id = ?));''', (id,))
     softwareseries = cur1.fetchall()
 
 
@@ -54,7 +54,13 @@ def hardware(id):
 #route for specific hardware
 @app.route('/softwareseries/<int:id>')
 def software():
-    return render_template("software.html", title="software")
+
+    conn = sqlite3.connect('HARDWARE.db')
+    cur = conn.cursor()
+    cur.execute('''SELECT * FROM SoftwareSeries WHERE sw_id = ''')
+    SoftwareSeries = cur.fetchall()
+
+    return render_template("software.html", title="software", SoftwareSeries=SoftwareSeries)
 
 
 if __name__ == "__main__":

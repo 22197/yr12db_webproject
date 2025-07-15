@@ -6,6 +6,11 @@ h1{
 p{
     font-family: "Space Mono", monospace;
 }
+a{
+    font-family: "Victor Mono", monospace;
+    color:#EE4949;
+}
+
 
 /* Layout */
 .row{

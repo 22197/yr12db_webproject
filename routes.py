@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import sqlite3
 
 
@@ -40,7 +40,7 @@ def hardware(id):
                 LEFT JOIN MediaType m ON h.media_id = m.media_id''')
     hardwares = cur.fetchall() #fetch all hardware, creating a list of tuples
     hardware = hardwares[id-1] #since id starts from 1, subtract 1 to get the correct index
-
+    #query for showing software series
     cur1 = conn.cursor()
     cur1.execute('''SELECT sw_id, sw_name FROM SoftwareSeries WHERE sw_id IN (
                  SELECT sw_id FROM HardSoft WHERE hw_id = (
@@ -61,6 +61,14 @@ def software():
     SoftwareSeries = cur.fetchall()
 
     return render_template("software.html", title="software", SoftwareSeries=SoftwareSeries)
+
+#route for search bar
+@app.route('search_result.html', methods = ['POST', 'GET'])
+def search():
+    search_query = request.args.get('search', '')
+    db = get_db()
+    if search_query:
+        
 
 
 if __name__ == "__main__":

@@ -24,30 +24,32 @@ def all_hardware():
 def hardware(id):
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
+    #Query --> get all the items in table Hardware connected to table MediaType and ConsoleType
     cur.execute('''SELECT
-                h.hw_id, 
-                h.hw_name, 
-                h.release_yr, 
-                h.description, 
-                h.sale_after_yr, 
-                c.console_type, 
-                m.media_name
+                    h.hw_id, 
+                    h.hw_name, 
+                    h.release_yr, 
+                    h.description, 
+                    h.sale_after_yr, 
+                    c.console_type, 
+                    m.media_name
 
                 FROM Hardware h
 
                 LEFT JOIN ConsoleType c ON h.con_id = c.con_id
 
-                LEFT JOIN MediaType m ON h.media_id = m.media_id''')
-    hardwares = cur.fetchall() #fetch all hardware, creating a list of tuples
-    hardware = hardwares[id-1] #since id starts from 1, subtract 1 to get the correct index
-    #query for showing software series
-    cur1 = conn.cursor()
-    cur1.execute('''SELECT sw_id, sw_name FROM SoftwareSeries WHERE sw_id IN (
+                LEFT JOIN MediaType m ON h.media_id = m.media_id
+                
+                WHERE h.hw_id = ?
+                ''', (id,))
+    hardware = cur.fetchone() #creating a list of tuples "hardwares"
+    #hardware = hardwares[id] #since id starts from 1, subtract 1 to get the correct index
+    cur = conn.cursor()
+    #Query --> get all softwareseries that are related to Hardware
+    cur.execute('''SELECT sw_id, sw_name FROM SoftwareSeries WHERE sw_id IN (
                  SELECT sw_id FROM HardSoft WHERE hw_id = (
                  SELECT hw_id FROM Hardware WHERE hw_id = ?));''', (id,))
-    softwareseries = cur1.fetchall()
-
-
+    softwareseries = cur.fetchall()#creating a list of tuples "softwareseries"
     conn.close()
     return render_template("hardware.html", title="hardware", id=id, hardware=hardware, softwareseries=softwareseries)
 
@@ -63,12 +65,11 @@ def software():
     return render_template("software.html", title="software", SoftwareSeries=SoftwareSeries)
 
 #route for search bar
-@app.route('search_result.html', methods = ['POST', 'GET'])
+'''@app.route('search_result.html', methods = ['POST', 'GET'])
 def search():
     search_query = request.args.get('search', '')
-    db = get_db()
     if search_query:
-        
+        print("hi")'''
 
 
 if __name__ == "__main__":

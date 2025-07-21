@@ -14,7 +14,7 @@ def home():
 def all_hardware():
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
-    cur.execute('SELECT hw_id, hw_name FROM Hardware;') 
+    cur.execute('SELECT hw_id, hw_name, hw_image FROM Hardware;') 
     hardwares = cur.fetchall()
     conn.close()
     return render_template("all_hardware.html", title="all_hardware", hardwares=hardwares)

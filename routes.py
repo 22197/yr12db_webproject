@@ -42,8 +42,7 @@ def hardware(id):
                 
                 WHERE h.hw_id = ?
                 ''', (id,))
-    hardware = cur.fetchone() #creating a list of tuples "hardwares"
-    #hardware = hardwares[id] #since id starts from 1, subtract 1 to get the correct index
+    hardware = cur.fetchone() #finding one row in the table Hardware with the id that was passed in the url
     cur = conn.cursor()
     #Query --> get all softwareseries that are related to Hardware
     cur.execute('''SELECT sw_id, sw_name FROM SoftwareSeries WHERE sw_id IN (
@@ -55,14 +54,16 @@ def hardware(id):
 
 #route for specific hardware
 @app.route('/softwareseries/<int:id>')
-def software():
+def software(id):
 
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
-    cur.execute('''SELECT * FROM SoftwareSeries WHERE sw_id = ''')
-    SoftwareSeries = cur.fetchall()
-
+    cur.execute('''SELECT * FROM SoftwareSeries WHERE sw_id = ?''', (id,))
+    SoftwareSeries = cur.fetchone()
+    conn.close()
     return render_template("software.html", title="software", SoftwareSeries=SoftwareSeries)
+    
+
 
 #route for search bar
 '''@app.route('search_result.html', methods = ['POST', 'GET'])

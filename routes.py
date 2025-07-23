@@ -32,7 +32,8 @@ def hardware(id):
                     h.description, 
                     h.sale_after_yr, 
                     c.console_type, 
-                    m.media_name
+                    m.media_name,
+                    h.hw_image
 
                 FROM Hardware h
 

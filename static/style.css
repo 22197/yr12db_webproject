@@ -11,6 +11,11 @@ a{
     color:#EE4949;
 }
 
+/* Images*/
+img{
+    width: 100%;
+    height: auto;
+}
 
 /* Layout */
 .row{

@@ -4,8 +4,7 @@
     <div class="column1left">
         {% for hardware in hardwares%} {# when the mouse hovers the links, the image changes respectivly (help from Github Copilot)#}
             <a href = "/hardware/{{hardware[0]}}" class="buttonlink2"  
-            onmouseover="changeImage('{{hardware[2]}}')" 
-            onmouseout="changeImage('/static/images/Nintendo_office.jpg')">
+            onmouseover="changeImage('{{hardware[2]}}')" >
             {{hardware[1]}}
             </a>
         {% endfor %}

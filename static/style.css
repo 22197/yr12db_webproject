@@ -86,7 +86,7 @@ header{
     background-color: whitesmoke;
     color: #ee4949;
 }
-    /* Try JAVA script to make it so the image changes -> get help from copilot */
+    /* Try JAVA script to make it so the image changes -> got help from copilot */
 .column1left{
     flex: 35%;
     padding: 10px;
@@ -113,4 +113,10 @@ header{
 
 
 /* _footer.html*/
-
+footer{
+    border: 3px solid #EE4949;
+    border-color: #EE4949;
+    text-align: center;
+    font-family: "Victor Mono", monospace;
+    padding: 20px;
+}

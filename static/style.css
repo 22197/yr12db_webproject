@@ -44,9 +44,7 @@ header{
 .buttonlink:hover{
     background-color: whitesmoke;
 }
-.searchbar{
-    float:right;
-}
+
 
 /* home.html */
 .buttonlink1{
@@ -61,17 +59,18 @@ header{
     border-left: 50%
 }
 .container {
-  height: 200px;
-  position: relative;
-  border: 3px solid #EE4949;
+    top:10px;
+    height: 200px;
+    position: relative;
+    border: 3px solid #EE4949;
 }
 .center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 /* all_hardware.html */
@@ -102,10 +101,28 @@ header{
 .img1{
     width: 100%;
     height: auto;
-    position: sticky;
+    position: sticky; /* Makes the image stay in place when scrolling (Advice from Alex)*/
     top: 20px;
 }
-
+.img2{
+    width: 100%;
+    height: auto;
+    position: sticky; /* Makes the image stay in place when scrolling (Advice from Alex)*/
+    top: 20px;
+}
+    /* searchbar */
+.container1 {
+    top:10px;
+    bottom:10px; 
+    height: 50px;
+    position: relative;
+    border: 3px solid #EE4949;
+    margin-right: 25%;
+    margin-left: 25%;
+}
+.searchbar{
+    float:center;
+}
 
 /* hardware.html */
 .column{

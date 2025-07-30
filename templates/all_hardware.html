@@ -4,12 +4,12 @@
 
 <div class = "container1">
    <div class="center">
-        <div class="searchbar">
-            <input type="text" placeholder="Search...">
-        </div>
+        <form action="/search" method="get">{# Help from Github Copilot and W3 schools #}
+            <input type="text" name="query" placeholder="Search hardware...">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
    </div>
 </div>
-
 <div class="row">
     <div class="column1left">
         {% for hardware in hardwares%} {# when the mouse hovers the links, the image changes respectivly (help from Github Copilot)#}

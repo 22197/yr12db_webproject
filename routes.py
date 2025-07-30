@@ -1,3 +1,5 @@
+'''Python Flask application routes for 12DB_WEBPROJECT.'''
+# routes.py
 from flask import Flask, render_template, request
 import sqlite3
 

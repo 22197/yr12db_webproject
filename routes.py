@@ -67,13 +67,19 @@ def software(id):
     return render_template("software.html", title="software", SoftwareSeries=SoftwareSeries)
     
 
-
 #route for search bar
-'''@app.route('search_result.html', methods = ['POST', 'GET'])
+@app.route('/search_result', methods = ['POST', 'GET']) #initaly copy student teacher's code
 def search():
     search_query = request.args.get('search', '')
+    conn = sqlite3.connect('HARDWARE.db')
     if search_query:
-        print("hi")'''
+        cursor = conn.execute('''SELECT * FROM Hardware WHERE hw_name LIKE ?''', ('%' + search_query + '%',))
+    else:
+        cursor = conn.execute('SELECT * FROM Hardware')
+    hardwares = cursor.fetchall()
+    conn.close()
+    return render_template('search_result.html', hardwares=hardwares, search_query=search_query)
+        
 
 
 if __name__ == "__main__":

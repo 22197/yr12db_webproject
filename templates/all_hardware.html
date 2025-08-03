@@ -1,15 +1,5 @@
 {% extends "layout.html" %}
 {% block content %}
-
-
-<div class = "container1">
-   <div class="center">
-        <form action="/search" method="get">{# Help from Github Copilot and W3 schools #}
-            <input type="text" name="query" placeholder="Search Hardware...">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-   </div>
-</div>
 <div class="row">
     <div class="column1left">
         {% for hardware in hardwares%} {# when the mouse hovers the links, the image changes respectivly (help from Github Copilot)#}
@@ -22,9 +12,4 @@
     <div class="column1right">
         <img class="img1" src="/static/images/Nintendo_office.jpg" alt="nintendo_office" >
     </div>
-
-
-
-
-
 {% endblock %}

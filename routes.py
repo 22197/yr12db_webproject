@@ -68,14 +68,22 @@ def software(id):
     
 
 #route for search bar
-@app.route('/search_result', methods = ['GET']) #initaly copy student teacher's code
-def search():
+@app.route('/search_result', methods = ['GET'])  
+def search(): #initaly copy student teacher's code --> adapt and improve it
     search_query = request.args.get('query', '')
+    search_type = request.args.get('type', 'name')  # 'name' or 'series' => help from Github Copilot
     conn = sqlite3.connect('HARDWARE.db')
     if search_query:
-        cursor = conn.execute('''SELECT * FROM Hardware WHERE hw_name LIKE ?''', ('%' + search_query + '%',))
+        if search_type == 'series':
+            #Query --> get all hardware that is related to SoftwareSeries from search_query
+            cursor = conn.execute('''SELECT hw_id, hw_name, hw_image FROM Hardware WHERE hw_id IN (
+                 SELECT hw_id FROM HardSoft WHERE sw_id IN (
+                 SELECT sw_id FROM SoftwareSeries WHERE sw_name LIKE ?));''', ('%' + search_query + '%',))
+        if search_type == 'name':
+            #Query --> get all hardware that is related to Hardware from search_query
+            cursor = conn.execute('''SELECT hw_id, hw_name, hw_image FROM Hardware WHERE hw_name LIKE ?''', ('%' + search_query + '%',))    
     else:
-        cursor = conn.execute('SELECT * FROM Hardware')
+        cursor = conn.execute('SELECT hw_id, hw_name, hw_image FROM Hardware')
     hardwares = cursor.fetchall()
     conn.close()
     return render_template('search_result.html', hardwares=hardwares, search_query=search_query)

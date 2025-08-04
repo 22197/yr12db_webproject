@@ -31,6 +31,7 @@ header{
     text-align: left;
     font-family: "Victor Mono", monospace;
     padding: 20px;
+    position: sticky; /* Thought it would be good to have the header stay in place when scrolling */
 }
 .buttonlink{
     background-color: white;
@@ -141,4 +142,5 @@ footer{
     text-align: center;
     font-family: "Victor Mono", monospace;
     padding: 20px;
+    margin-bottom: 20px;
 }

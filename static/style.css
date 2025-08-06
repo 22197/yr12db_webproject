@@ -45,6 +45,11 @@ header{
 .buttonlink:hover{
     background-color: whitesmoke;
 }
+.logo{
+    width: auto; 
+    height: 50px;
+    vertical-align: middle; 
+}
 
 
 /* home.html */

@@ -116,7 +116,12 @@ header{
     position: sticky; /* Makes the image stay in place when scrolling (Advice from Alex)*/
     top: 20px;
 }
-    /* searchbar */
+
+ /* Searchbar */
+h2{
+    font-family: "Victor Mono", monospace;
+    color:#EE4949;
+}
 .container1 {
     margin-top:10px;
     margin-bottom:10px; 
@@ -127,7 +132,21 @@ header{
     margin-left: 25%;
 }
 .searchbar{
-    float:center;
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #EE4949;   /* This will show a visible border */
+    padding: 5px;
+    width: 80%;
+    border-radius: 5px;
+    font-family: "Victor Mono", monospace;
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+   
 }
 
 /* hardware.html */

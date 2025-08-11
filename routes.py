@@ -88,6 +88,11 @@ def search(): #initaly copy student teacher's code --> adapt and improve it
     conn.close()
     return render_template('search_result.html', hardwares=hardwares, search_query=search_query)
 
+#attributons page route
+@app.route('/attributions')
+def attributions():
+    return render_template("attributions.html", title="attributions")
+
 #route for 404 error
 @app.errorhandler(404)
 def page_not_found(e):

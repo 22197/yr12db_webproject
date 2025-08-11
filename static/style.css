@@ -188,3 +188,9 @@ footer{
     padding: 20px;
     margin-bottom: 20px;
 }
+.column1{
+    flex: 0 0 33.3%;
+    padding: 10px;
+    text-align: center;
+    box-sizing :border-box;
+}

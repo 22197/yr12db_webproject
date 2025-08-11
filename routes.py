@@ -87,7 +87,11 @@ def search(): #initaly copy student teacher's code --> adapt and improve it
     hardwares = cursor.fetchall()
     conn.close()
     return render_template('search_result.html', hardwares=hardwares, search_query=search_query)
-       
+
+#route for 404 error
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404  
 
 
 if __name__ == "__main__":

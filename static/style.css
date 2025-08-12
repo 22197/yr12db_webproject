@@ -66,6 +66,7 @@ header{
 }
 .container {
     top:10px;
+    padding-bottom:10px;
     height: 200px;
     position: relative;
     border: 3px solid #EE4949;
@@ -136,7 +137,6 @@ h2{
     margin: 0 auto;
     border: 2px solid #EE4949;   /* This will show a visible border */
     padding: 5px;
-    width: 80%;
     border-radius: 5px;
     border-width:3px;
     font-family: "Victor Mono", monospace;
@@ -167,6 +167,7 @@ form {
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
 /* hardware.html */

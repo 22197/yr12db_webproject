@@ -6,12 +6,12 @@ import sqlite3
 
 app = Flask(__name__)
 
-#route for home
+# route for home
 @app.route('/')
 def home():
     return render_template("home.html", title="HOME")
 
-#route for all hardware
+# route for all hardware
 @app.route('/allhardware', methods = ['GET'])
 def all_hardware():
     conn = sqlite3.connect('HARDWARE.db')
@@ -19,7 +19,8 @@ def all_hardware():
     cur.execute('SELECT hw_id, hw_name, hw_image FROM Hardware;') 
     hardwares = cur.fetchall()
     conn.close()
-    return render_template("all_hardware.html", title="all_hardware", hardwares=hardwares)
+    return render_template("all_hardware.html", title="all_hardware",
+                           hardwares=hardwares)
 
 
 #route for specific hardware

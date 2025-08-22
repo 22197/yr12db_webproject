@@ -30,12 +30,12 @@ def hardware(id):
     cur = conn.cursor()
     #Query --> get all the items in table Hardware connected to table MediaType and ConsoleType
     cur.execute('''SELECT
-                    h.hw_id, 
-                    h.hw_name, 
-                    h.release_yr, 
-                    h.description, 
-                    h.sale_after_yr, 
-                    c.console_type, 
+                    h.hw_id,
+                    h.hw_name,
+                    h.release_yr,
+                    h.description,
+                    h.sale_after_yr,
+                    c.console_type,
                     m.media_name,
                     h.hw_image
 
@@ -97,7 +97,7 @@ def attributions():
 #route for 404 error
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404  
+    return render_template('404.html'), 404 
 
 
 if __name__ == "__main__":

@@ -181,6 +181,11 @@ form {
     gap: 10px;
     width: 100%;
 }
+h5{
+    font-family: "Victor Mono", monospace;
+    color:#EE4949;
+    text-align: center;
+}
 
 /* hardware.html */
 .column{

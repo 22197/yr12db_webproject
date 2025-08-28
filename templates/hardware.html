@@ -12,7 +12,7 @@
 </div>
 <div class="row">
     <div class="column">
-        <p>Popular series available:</p>
+        <p><b>Popular series available:</b></p>
         {% for software in softwareseries%}
             <a href = "/softwareseries/{{software[0]}}">
                 {{software[1]}}
@@ -20,11 +20,14 @@
         {% endfor %}     
     </div>
     <div class="column">
-        <p>Console Type: {{hardware[5]}}</p>
-        <p>Media Type: {{hardware[6]}}</p>
-        <p>Release Year: {{hardware[2]}}</p>
-        <p>Sales: {{hardware[4]}}</p>
-        <p>*Sales may be blank due to no data</p>
+        <p><b>Console Type:</b> {{hardware[5]}}</p>
+        <p><b>Media Type:</b> {{hardware[6]}}</p>
+        <p><b>Release Year:</b> {{hardware[2]}}</p>
+        {% if hardware[4] == none %}
+            <p><b>Sales:</b> Unknown</p>
+        {% else %}
+            <p><b>Sales:</b> {{hardware[4]}}</p>
+        {% endif %}
     </div>
 </div>
 {% endblock%}

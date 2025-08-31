@@ -76,6 +76,8 @@ def software(id):
 @app.route('/search_result', methods=['GET'])  
 def search():  # initaly copy student teacher's code --> adapt and improve it
     search_query = request.args.get('query', '')
+    if not (1 <= len(search_query) <= 50):
+        return render_template('search_result.html', error="Search must be 1-50 characters.")
     search_type = request.args.get('type', 'name')  # 'name' or 'series'
     conn = sqlite3.connect('HARDWARE.db')
     if search_query:

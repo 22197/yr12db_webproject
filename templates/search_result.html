@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class = "container1">
+<div class="container1">
    <div class="center">
         <form action="/search_result" method="get">
-            <input type="text" class="searchbar" name="query" placeholder="Search...">
+            <input type="text" class="searchbar" name="query" placeholder="Search..." maxlength="50" minlength="1">
             <h5>search by:</h5>
-            <select class="open" name ="type">
+            <select class="open" name="type">
                 <option value="name">Hardware Name</option>
                 <option value="series">Software Series</option>
             </select>
@@ -13,22 +13,25 @@
         </form>
    </div>
 </div>
-<h2>Results for "{{ search_query }}"</h2>
-{% if hardwares %} {#Help from Github Copilot#}
-    <div class="row">
-        <div class="column1left">
-            {% for hardware in hardwares %}
-                <a href="/hardware/{{hardware[0]}}" class="buttonlink2"
-                   onmouseover="changeImage('{{hardware[2]}}')">
-                    {{hardware[1]}}
-                </a>
-            {% endfor %}
+
+{% if search_query %}
+    <h2>Results for "{{ search_query }}"</h2>
+    {% if hardwares %}
+        <div class="row">
+            <div class="column1left">
+                {% for hardware in hardwares %}
+                    <a href="/hardware/{{hardware[0]}}" class="buttonlink2"
+                       onmouseover="changeImage('{{hardware[2]}}')">
+                        {{hardware[1]}}
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="column1right">
+                <img class="img1" src="/static/images/Nintendo_Hanafuda.jpg" alt="nintendo_hanafuda">
+            </div>
         </div>
-        <div class="column1right">
-            <img class="img1" src="/static/images/Nintendo_Hanafuda.jpg" alt="nintendo_hanafuda">
-        </div>
-    </div>
+    {% endif %}
 {% else %}
-    <p>No hardware found.</p>
+    <h2>No hardware found.</h2>
 {% endif %}
 {% endblock %}

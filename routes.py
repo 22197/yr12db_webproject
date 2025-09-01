@@ -106,10 +106,13 @@ def search():  # initaly copy student teacher's code --> adapt and improve it
             cursor = conn.execute('''SELECT hw_id, hw_name, hw_image
                 FROM Hardware WHERE hw_id IN (
                 SELECT hw_id FROM HardSoft WHERE sw_id IN (
-                SELECT sw_id FROM SoftwareSeries WHERE sw_name LIKE ?));''', ('%' + search_query + '%',))
+                    SELECT sw_id FROM SoftwareSeries WHERE sw_name LIKE ?)
+                    );''',
+                ('%' + search_query + '%',)
+                )
         elif search_type == 'name':
             # Query --> get all hardware related from search_query
-            cursor = conn.execute('''SELECT hw_id, hw_name, hw_image 
+            cursor = conn.execute('''SELECT hw_id, hw_name, hw_image
             FROM Hardware WHERE hw_name LIKE ?''', ('%' + search_query + '%',))
     else:
         cursor = conn.execute('SELECT hw_id, hw_name, hw_image FROM Hardware')

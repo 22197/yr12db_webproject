@@ -76,6 +76,8 @@ def hardware(id):
 @app.route('/softwareseries/<int:id>')
 def software(id):
     # To show detail of specific software series from the hardware details page
+    if id < 1 or id > 21:  # abourt 404 if id not in range of sw_id
+        return render_template('404.html'), 404
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
     # Query --> get one row in SoftwareSeries with sw_id relevant

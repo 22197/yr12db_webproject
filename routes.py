@@ -35,6 +35,9 @@ def all_hardware():
 def hardware(id):
     # render the hardware details page.
     # Shows details about a specific hardware item
+    if id < 1 or id > 19:
+        return render_template('404.html'), 404
+
     conn = sqlite3.connect('HARDWARE.db')
     cur = conn.cursor()
     # Query --> get hardware details in a readable format

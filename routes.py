@@ -83,6 +83,7 @@ def software(id):
     # Query --> get one row in SoftwareSeries with sw_id relevant
     cur.execute('''SELECT * FROM SoftwareSeries WHERE sw_id = ?''', (id,))
     software_series = cur.fetchone()
+    # also get all hardware related to this software series if have time
     conn.close()
     return render_template(
         "software.html",
@@ -98,35 +99,54 @@ def search():  # initaly copy student teacher's code --> adapt and improve it
     # Needed so the user can search for hardware by name or by software
     search_query = request.args.get('query', '')
     if not (1 <= len(search_query) <= 50):
-        return render_template(
-            'search_result.html',
-            error="Search must be 1-50 characters."
-            )
+        return render_template('search_result.html')
     search_type = request.args.get('type', 'name')  # 'name' or 'series'
     conn = sqlite3.connect('HARDWARE.db')
-    if search_query:
-        if search_type == 'series':
-            # Query --> get hardware related to software from search_query
-            cursor = conn.execute('''SELECT hw_id, hw_name, hw_image
-                FROM Hardware WHERE hw_id IN (
-                SELECT hw_id FROM HardSoft WHERE sw_id IN (
-                    SELECT sw_id FROM SoftwareSeries WHERE sw_name LIKE ?)
-                    );''',
-                ('%' + search_query + '%',)
-                )
-        elif search_type == 'name':
-            # Query --> get all hardware related from search_query
-            cursor = conn.execute('''SELECT hw_id, hw_name, hw_image
-            FROM Hardware WHERE hw_name LIKE ?''', ('%' + search_query + '%',))
-    else:
-        cursor = conn.execute('SELECT hw_id, hw_name, hw_image FROM Hardware')
-    hardwares = cursor.fetchall()
-    conn.close()
-    return render_template(
-        'search_result.html',
-        hardwares=hardwares,
-        search_query=search_query
+    try:  # try and except to prevent crashing if error in SQL query
+        if search_query:
+            if search_type == 'series':
+                # Query --> get hardware related to software from search_query
+                cursor = conn.execute('''SELECT hw_id, hw_name, hw_image
+                    FROM Hardware WHERE hw_id IN (
+                    SELECT hw_id FROM HardSoft WHERE sw_id IN (
+                        SELECT sw_id FROM SoftwareSeries WHERE sw_name LIKE ?)
+                        );''', ('%' + search_query + '%',)
+                    )
+            elif search_type == 'name':
+                # Query --> get all hardware related from search_query
+                cursor = conn.execute('''SELECT hw_id,
+                                    hw_name,
+                                    hw_image
+                                    FROM Hardware
+                                    WHERE hw_name
+                                    LIKE ?''', ('%' + search_query + '%',))
+        else:
+            cursor = conn.execute('''SELECT hw_id,
+                                  hw_name,
+                                  hw_image
+                                  FROM Hardware''')
+        hardwares = cursor.fetchall()
+        conn.close()
+        if search_query and not hardwares:
+            # if statement to pass error when no results found
+            error = "No results found for your search."
+            return render_template(
+                'search_result.html',
+                hardwares=hardwares,
+                search_query=search_query,
+                error=error
+            )
+        # render template normally if no errors
+        return render_template(
+            'search_result.html',
+            hardwares=hardwares,
+            search_query=search_query
         )
+    except (UnboundLocalError, sqlite3.OperationalError):
+        # if the user trys to break the SQL query, create error message
+        conn.close()
+        error = "An error occurred while processing your request."
+        return render_template('search_result.html', error=error)
 
 
 # attributons page route

@@ -31,9 +31,12 @@
             </div>
         </div>
     {% else %}
-        <h2>No results found.</h2>
+        <h2>{{ error }}</h2>
     {% endif %}
-{% elif not search_query %}
+{% elif error %}
+    <h2>Error</h2>
+    <p>{{ error }}</p>
+{% else %}
     <h2>Search for Hardware!</h2>
 {% endif %}
 {% endblock %}

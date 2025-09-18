@@ -1,10 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-{# recieve search query #}
+{# search bar #}
 <div class="container1">
    <div class="center">
         <form action="/search_result" method="get">
-            <input type="text" class="searchbar" name="query" placeholder="Search..." maxlength="50" minlength="1">
+            <input type="text" class="searchbar" name="query" placeholder="Search..." maxlength="50">
             <h5>search by:</h5>
             <select class="open" name="type">
                 <option value="name">Hardware Name</option>

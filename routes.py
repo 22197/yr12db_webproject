@@ -35,6 +35,7 @@ def all_hardware():
 def hardware(id):
     # render the hardware details page.
     # Shows details about a specific hardware item
+    # need so user can see info in detail
     if id < 1 or id > 19:  # abourt 404 if id not in range of hw_id
         return render_template('404.html'), 404
     conn = sqlite3.connect('HARDWARE.db')
@@ -98,8 +99,10 @@ def search():  # initaly copy student teacher's code --> adapt and improve it
     # Render the search results page.
     # Needed so the user can search for hardware by name or by software
     search_query = request.args.get('query', '')
-    if not (1 <= len(search_query) <= 50):
-        return render_template('search_result.html')
+    if not (len(search_query) <= 50):
+        error = "Search query too long."
+        return render_template('search_result.html',
+                               error=error)
     search_type = request.args.get('type', 'name')  # 'name' or 'series'
     conn = sqlite3.connect('HARDWARE.db')
     try:  # try and except to prevent crashing if error in SQL query

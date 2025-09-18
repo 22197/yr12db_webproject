@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 {# search bar #}
+<h2>Search for Hardware!</h2>
 <div class="container1">
    <div class="center">
         <form action="/search_result" method="get">
@@ -29,7 +30,7 @@
                 {% endfor %}
             </div>
             <div class="column1right">
-                <img class="img1" src="/static/images/Nintendo_Hanafuda.jpg" alt="nintendo_hanafuda">
+                <img class="img1" src="{{ hardwares[0][2] }}" alt="Hardware Image">
             </div>
         </div>
     {# error messages #}
@@ -39,7 +40,5 @@
 {% elif error %}
     <h2>Error</h2>
     <p>{{ error }}</p>
-{% else %}
-    <h2>Search for Hardware!</h2>
 {% endif %}
 {% endblock %}

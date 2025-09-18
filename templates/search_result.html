@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+{# recieve search query #}
 <div class="container1">
    <div class="center">
         <form action="/search_result" method="get">
@@ -14,6 +15,7 @@
    </div>
 </div>
 
+{# presenting results and showing error message if necessary #}
 {% if search_query %}
     {% if hardwares %}
         <h2>Results for "{{ search_query }}"</h2>
@@ -30,6 +32,7 @@
                 <img class="img1" src="/static/images/Nintendo_Hanafuda.jpg" alt="nintendo_hanafuda">
             </div>
         </div>
+    {# error messages #}
     {% else %}
         <h2>{{ error }}</h2>
     {% endif %}

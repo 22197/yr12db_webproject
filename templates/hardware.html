@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-
+{# presenting all the data for the hardware on that page #}
 <h1>{{hardware[1]}}</h1>
 <div class="row">
     <div class="column">
@@ -13,7 +13,7 @@
 <div class="row">
     <div class="column">
         <p><b>Popular series available:</b></p>
-        {% if not softwareseries%}
+        {% if not softwareseries%} {# having unknown instead of none #}
             <p>Unknown</p>
         {% else %}
             {% for software in softwareseries%}

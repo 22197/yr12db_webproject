@@ -16,7 +16,7 @@ def home():
 
 
 # route for all hardware
-@app.route('/allhardware', methods=['GET'])
+@app.route('/allhardware')
 def all_hardware():
     # Render the all hardware page.
     # Needed so user can see all hardware in database, choose one
@@ -93,7 +93,7 @@ def software(id):
 
 
 # route for search bar
-@app.route('/search_result', methods=['GET'])
+@app.route('/search_result')
 def search():  # initaly copy student teacher's code --> adapt and improve it
     # Render the search results page.
     # Needed so the user can search for hardware by name or by software
